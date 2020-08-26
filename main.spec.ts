@@ -6,7 +6,6 @@ import { expect } from 'chai';
 import 'mocha';
 
 
-
 describe('Player 1', () => {
   it('should win the game when the score is 4-0', () => {
     // given

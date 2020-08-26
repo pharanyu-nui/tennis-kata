@@ -3,37 +3,26 @@
 // 
 
 export interface Game {
-    player1: Player;
-    player2: Player;
-}
-
-export interface Player {
-    name: string;
-    score: number;
+    player1Score: number;
+    player2Score: number;
 }
 
 export function updateGameScore(point1: number, point2: number): Game {
     return {
-        player1: {
-            name: 'Player 1',
-            score: point1
-        },
-        player2: {
-            name: 'Player 2',
-            score: point2
-        }
+        player1Score: point1,
+        player2Score: point2
     }
 }
 
 export function decideGameWinner(game: Game): string {
-    if (game.player1.score < 4 && game.player2.score < 4) {
+    if (game.player1Score < 4 && game.player2Score < 4) {
         return '??'
     }
 
-    if (game.player1.score - game.player2.score >= 2) {
-        return game.player1.name;
-    } else if (game.player2.score - game.player1.score >= 2) {
-        return game.player2.name;
+    if (game.player1Score - game.player2Score >= 2) {
+        return 'Player 1';
+    } else if (game.player2Score - game.player1Score >= 2) {
+        return 'Player 2';
     }
 }
 
@@ -48,3 +37,14 @@ export function printScore(scores: number[]): string {
     });
     return ''.concat(...convertScoreToTexts);
 }
+
+
+// given
+const player1Points = 4;
+const player2Points = 0;
+
+// when
+const game = updateGameScore(player1Points, player2Points);
+const winner = decideGameWinner(game);
+
+console.log(winner);

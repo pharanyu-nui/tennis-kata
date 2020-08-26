@@ -22,10 +22,7 @@ export function decideGameWinner(game: Game): string {
     }
 }
 
-export function printScore(scores: number[]): string {
-    if (scores.length !== 2) {
-        return 'error';
-    }
+export function printScore(scores: readonly [number, number]): string {
 
     if (scores[0] >= 3 && scores[1] >= 3) {
         if (scores[0] === scores[1]) {
